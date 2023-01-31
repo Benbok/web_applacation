@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Patient(models.Model):
@@ -12,6 +13,9 @@ class Patient(models.Model):
 
     def __str__(self):
         return f'{self.first_name}'
+
+    def get_absolute_url(self):
+        return reverse('patient_view', kwargs={'id': self.pk})
 
     class Meta:
         verbose_name = 'Пациент'
@@ -44,6 +48,9 @@ class EchoExamination(models.Model):
 
     def __str__(self):
         return f'{self.exam_name}'
+
+    def get_absolute_url(self):
+        return reverse('echo_exam', kwargs={'id': self.pk})
 
     class Meta:
         verbose_name = 'Результат исследования ЭхоКГ'

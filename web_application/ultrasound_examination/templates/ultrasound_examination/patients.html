@@ -1,0 +1,42 @@
+{% extends "ultrasound_examination/base.html" %}
+
+
+{% block title %}
+Реестр пациентов
+{% endblock %}
+
+{% block table %}
+<h1>Реестр пациентов</h1>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Имя</th>
+        <th scope="col">Фамилия</th>
+        <th scope="col">Дата рождения</th>
+    </tr>
+    </thead>
+    {% for p in patients %}
+    <tbody>
+    <a href="/">
+        <tr>
+            <th scope="row">{{ p.pk }}</th>
+            <td>
+                <button type="button" class="list-group-item list-group-item-action" aria-current="true">
+                    <a href="{ p.get_absolute_url }">
+                        {{ p.first_name }}
+                    </a>
+                </button>
+            <td>
+                <button type="button" class="list-group-item list-group-item-action" aria-current="true">
+                    {{ p.last_name }}
+                </button>
+            </td>
+            <td>{{ p.date_of_birth|date:"d.m.Y" }}</td>
+        </tr>
+    </a>
+    </tbody>
+    {% endfor %}
+</table>
+{% endblock %}
+

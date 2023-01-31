@@ -26,7 +26,7 @@ class Migration(migrations.Migration):
             options={
                 'verbose_name': 'Пациент',
                 'verbose_name_plural': 'Пациенты',
-                'db_table': 'patients',
+                'db_table': 'patients.html',
                 'ordering': ['-first_name'],
             },
         ),

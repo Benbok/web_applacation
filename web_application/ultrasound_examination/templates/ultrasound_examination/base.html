@@ -6,79 +6,121 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{% static 'ultrasound_examination/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'ultrasound_examination/css/sidebars.css' %}">
-    <title>Bootstrap demo</title>
+    <title>
+        {% block title %}
+        {% endblock %}
+    </title>
 </head>
 <body>
 <div class="container py-3">
-  <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
-      <a href="/" class="d-flex align-items-center text-light text-decoration-none">
-        <span class="fs-4">Pricing example</span>
-      </a>
+    <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+        <a href="{% url 'home_page' %}"
+           class="d-flex align-items-center text-light text-decoration-none">
+            <span class="fs-4">Medusist</span>
+        </a>
 
-      <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
-        <a class="me-3 py-2 text-light text-decoration-none" href="#">Features</a>
-        <a class="me-3 py-2 text-light text-decoration-none" href="#">Enterprise</a>
-        <a class="me-3 py-2 text-light text-decoration-none" href="#">Support</a>
-        <a class="py-2 text-light text-decoration-none" href="#">Pricing</a>
-      </nav>
+        <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+            <a class="me-3 py-2 text-light text-decoration-none" href="#">О нас</a>
+            <a class="me-3 py-2 text-light text-decoration-none" href="#">Контакты</a>
+        </nav>
     </div>
-  <br>
-<div class="flex-shrink-0 p-3" style="width: 280px; background-color: dark;">
-    <a href="/" class="d-flex align-items-center pb-3 mb-3 link-light text-decoration-none border-bottom">
-      <svg class="bi pe-none me-2" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
-      <span class="fs-5 fw-semibold">Collapsible</span>
-    </a>
-    <ul class="list-unstyled ps-0">
-      <li class="mb-1">
-        <li class="btn btn-toggle d-inline-flex align-items-center rounded border-0 link-light" data-bs-target="#">
-          Home
-        </li>
+</div>
+<div class="container">
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="flex-shrink-0 p-4" style="width: 280px; background-color: dark;">
+                    <svg class="bi pe-none me-2" width="30" height="24">
+                        <use xlink:href="#bootstrap"/>
+                    </svg>
+                    <span class="fs-5 fw-semibold">Меню</span>
+                    <ul class="list-unstyled ps-0">
+                        <li class="mb-1">
+                            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed link-light"
+                                    data-bs-toggle="collapse" data-bs-target="#patients-collapse" aria-expanded="True">
+                                Пациенты
+                            </button>
+                            <div class="collapse" id="patients-collapse">
+                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                    <li><a href="{% url 'patients' %}"
+                                           class="link-light d-inline-flex text-decoration-none rounded">Реестр
+                                        пацеинтов</a>
+                                    </li>
+                                </ul>
+                            </div>
 
-      </li>
-      <li class="mb-1">
-        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed link-light" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
-          Dashboard
-        </button>
-        <div class="collapse" id="dashboard-collapse">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-light d-inline-flex text-decoration-none rounded">Overview</a></li>
-            <li><a href="#" class="link-light d-inline-flex text-decoration-none rounded">Weekly</a></li>
-            <li><a href="#" class="link-light d-inline-flex text-decoration-none rounded">Monthly</a></li>
-            <li><a href="#" class="link-light d-inline-flex text-decoration-none rounded">Annually</a></li>
-          </ul>
+                        </li>
+                        <li class="mb-1">
+                            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed link-light"
+                                    data-bs-toggle="collapse" data-bs-target="#dashboard-collapse"
+                                    aria-expanded="false">
+                                Результаты
+                            </button>
+                            <div class="collapse" id="dashboard-collapse">
+                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                    <li><a href="{ get_absolute_url }"
+                                           class="link-light d-inline-flex text-decoration-none rounded">ЭхоКГ</a></li>
+                                    <li><a href="#"
+                                           class="link-light d-inline-flex text-decoration-none rounded">Нейросонография</a>
+                                    </li>
+                                    <li><a href="#" class="link-light d-inline-flex text-decoration-none rounded">УЗИ
+                                        ОБП</a>
+                                    </li>
+                                    <li><a href="#" class="link-light d-inline-flex text-decoration-none rounded">УЗИ
+                                        малого
+                                        таза</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="mb-1">
+                            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed link-light"
+                                    data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+                                Orders
+                            </button>
+                            <div class="collapse" id="orders-collapse">
+                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                    <li><a href="#"
+                                           class="link-light d-inline-flex text-decoration-none rounded">New</a></li>
+                                    <li><a href="#" class="link-light d-inline-flex text-decoration-none rounded">Processed</a>
+                                    </li>
+                                    <li><a href="#" class="link-light d-inline-flex text-decoration-none rounded">Shipped</a>
+                                    </li>
+                                    <li><a href="#" class="link-light d-inline-flex text-decoration-none rounded">Returned</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="border-top my-3"></li>
+                        <li class="mb-1">
+                            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed link-light"
+                                    data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
+                                Account
+                            </button>
+                            <div class="collapse" id="account-collapse">
+                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                    <li><a href="#"
+                                           class="link-light d-inline-flex text-decoration-none rounded">New...</a>
+                                    </li>
+                                    <li><a href="#" class="link-light d-inline-flex text-decoration-none rounded">Profile</a>
+                                    </li>
+                                    <li><a href="#" class="link-light d-inline-flex text-decoration-none rounded">Settings</a>
+                                    </li>
+                                    <li><a href="#" class="link-light d-inline-flex text-decoration-none rounded">Sign
+                                        out</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-8">
+                {% block table %}
+                {% endblock %}
+            </div>
         </div>
-      </li>
-      <li class="mb-1">
-        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed link-light" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
-          Orders
-        </button>
-        <div class="collapse" id="orders-collapse">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-light d-inline-flex text-decoration-none rounded">New</a></li>
-            <li><a href="#" class="link-light d-inline-flex text-decoration-none rounded">Processed</a></li>
-            <li><a href="#" class="link-light d-inline-flex text-decoration-none rounded">Shipped</a></li>
-            <li><a href="#" class="link-light d-inline-flex text-decoration-none rounded">Returned</a></li>
-          </ul>
-        </div>
-      </li>
-      <li class="border-top my-3"></li>
-      <li class="mb-1">
-        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed link-light" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
-          Account
-        </button>
-        <div class="collapse" id="account-collapse">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-light d-inline-flex text-decoration-none rounded">New...</a></li>
-            <li><a href="#" class="link-light d-inline-flex text-decoration-none rounded">Profile</a></li>
-            <li><a href="#" class="link-light d-inline-flex text-decoration-none rounded">Settings</a></li>
-            <li><a href="#" class="link-light d-inline-flex text-decoration-none rounded">Sign out</a></li>
-          </ul>
-        </div>
-      </li>
-    </ul>
-  </div>
-
-<h1>Hello, world!</h1>
+    </div>
 </div>
 <script src="{% static 'ultrasound_examination/js/bootstrap.bundle.min.js' %}"></script>
 </body>
