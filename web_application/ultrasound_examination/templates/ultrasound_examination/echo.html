@@ -1,0 +1,31 @@
+{% extends "ultrasound_examination/home_page.html" %}
+
+
+{% block title %}
+ЭхоКГ
+{% endblock %}
+
+{% block table %}
+{% load ultrasound_examination_tags %}
+
+<h1>Реестр исследований</h1>
+{% get_all_echo_exams as all_echo_exams %}
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Имя</th>
+        <th scope="col">Дата исследования</th>
+    </tr>
+    </thead>
+    {% for eх in all_echo_exams %}
+    <tbody>
+    <a href="/">
+        <tr>
+            <th scope="row">{{ eх.exams }}</th>
+            <th scope="row">{{ eх.date_of_the_exam|date:"d.m.Y" }}</th>
+        </tr>
+    </a>
+    </tbody>
+    {% endfor %}
+</table>
+{% endblock %}

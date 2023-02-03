@@ -1,4 +1,5 @@
-{% extends "ultrasound_examination/base.html" %}
+{% extends "ultrasound_examination/home_page.html" %}
+{% load ultrasound_examination_tags %}
 
 
 {% block title %}
@@ -6,6 +7,8 @@
 {% endblock %}
 
 {% block table %}
+{% get_all_patients as all_patients %}
+{% get_all_echo_exams as all_echo_exams %}
 <h1>Реестр пациентов</h1>
 <table class="table">
     <thead>
@@ -16,14 +19,14 @@
         <th scope="col">Дата рождения</th>
     </tr>
     </thead>
-    {% for p in patients %}
+    {% for p in all_patients %}
     <tbody>
     <a href="/">
         <tr>
             <th scope="row">{{ p.pk }}</th>
             <td>
                 <button type="button" class="list-group-item list-group-item-action" aria-current="true">
-                    <a href="{ p.get_absolute_url }">
+                    <a href="{{ p.get_absolute_url }}">
                         {{ p.first_name }}
                     </a>
                 </button>

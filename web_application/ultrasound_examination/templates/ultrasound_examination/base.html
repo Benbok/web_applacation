@@ -43,10 +43,8 @@
                             </button>
                             <div class="collapse" id="patients-collapse">
                                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                    <li><a href="{% url 'patients' %}"
-                                           class="link-light d-inline-flex text-decoration-none rounded">Реестр
-                                        пацеинтов</a>
-                                    </li>
+                                    {% block registry_patietns %}
+                                    {% endblock %}
                                 </ul>
                             </div>
 
@@ -55,21 +53,12 @@
                             <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed link-light"
                                     data-bs-toggle="collapse" data-bs-target="#dashboard-collapse"
                                     aria-expanded="false">
-                                Результаты
+                                Обследования
                             </button>
                             <div class="collapse" id="dashboard-collapse">
                                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                    <li><a href="{ get_absolute_url }"
-                                           class="link-light d-inline-flex text-decoration-none rounded">ЭхоКГ</a></li>
-                                    <li><a href="#"
-                                           class="link-light d-inline-flex text-decoration-none rounded">Нейросонография</a>
-                                    </li>
-                                    <li><a href="#" class="link-light d-inline-flex text-decoration-none rounded">УЗИ
-                                        ОБП</a>
-                                    </li>
-                                    <li><a href="#" class="link-light d-inline-flex text-decoration-none rounded">УЗИ
-                                        малого
-                                        таза</a></li>
+                                    {% block list_exam %}
+                                    {% endblock %}
                                 </ul>
                             </div>
                         </li>

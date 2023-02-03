@@ -4,4 +4,17 @@
 Главная страница
 {% endblock %}
 
+{% block registry_patietns %}
+<li><a href="{% url 'patients' %}"
+       class="link-light d-inline-flex text-decoration-none rounded">Реестр
+    пацеинтов</a>
+</li>
+{% endblock %}
 
+
+{% block list_exam %}
+<li>
+    <a href="{% url 'echo' %}" class="link-light d-inline-flex text-decoration-none rounded">ЭхоКГ</a>
+    <a href="/" class="link-light d-inline-flex text-decoration-none rounded">УЗИ органов брюшной полости</a>
+</li>
+{% endblock %}

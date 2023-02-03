@@ -1,0 +1,48 @@
+{% extends "ultrasound_examination/patients.html" %}
+
+{% block title %}
+Осмотры
+{% endblock %}
+
+{% block table %}
+<div class="row">
+    <div class="col-4">
+        <div id="list-example" class="list-group">
+            <a class="list-group-item list-group-item-action" href="#list-item-1">Основное</a>
+            <a class="list-group-item list-group-item-action" href="#list-item-2">Осмотры</a>
+        </div>
+    </div>
+    <div class="col-8">
+        <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-smooth-scroll="true" class="scrollspy-example"
+             tabindex="0">
+            <h4 id="list-item-1">Данные пациента</h4>
+            <p>Пациент {{ patient.first_name }} {{ patient.last_name }} {{ patient.sur_name }}</p>
+            <p>Дата рождения {{ patient.date_of_birth }}</p>
+            <h4 id="list-item-2">Осмотры</h4>
+
+            {% if count_echo > 0 %}
+            <p>{{ echo.exam_name }} в количестве {{ count_echo }}</p>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Дата исследования</th>
+                </tr>
+                </thead>
+                {% for eх in echo %}
+                <tbody>
+                <a href="/">
+                    <tr>
+                        <th scope="row">{{ eх.date_of_the_exam|date:"d.m.Y" }}</th>
+                    </tr>
+                </a>
+                </tbody>
+                {% endfor %}
+            </table>
+            {% else %}
+            <p>Осмотров нет</p>
+            {% endif %}
+
+        </div>
+    </div>
+</div>
+{% endblock %}
